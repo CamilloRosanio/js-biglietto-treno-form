@@ -60,20 +60,20 @@
                     <!-- INPUT COMPLETE NAME -->
                     <div class="col-3 text-center mt-0">
                         <label for="input_completeName" class="h6 mt-3 mb-4">Nome e Cognome</label>
-                        <input id="input_completeName" class="form-control mb-4" type="text" placeholder="Inserisci nome completo" value="placeholder" required>
+                        <input id="input_completeName" class="form-control mb-4" type="text" placeholder="Inserisci nome completo" value="" required>
                     </div>
                     <!-- INPUT KM -->
                     <div class="col-3 text-center mt-0">
                         <label for="input_kilometers" class="h6 mt-3 mb-4">Km da percorrere</label>
-                        <input id="input_kilometers" class="form-control mb-4" type="number" placeholder="Inserisci Km" value="1" required>
+                        <input id="input_kilometers" class="form-control mb-4" type="number" placeholder="Inserisci Km" value="" required>
                     </div>
                     <!-- INPUT AGE GROUP -->
                     <div class="col-3 text-center mt-0">
                         <label for="input_ageGroup" class="h6 mt-3 mb-4">Fascia d'età</label>
-                        <select id="input_ageGroup" class="form-control mb-4" value="Maggiorenne">
+                        <select id="input_ageGroup" class="form-control mb-4" value="">
                             <option value="Minorenne">Minorenne</option>
                             <option  value="Maggiorenne">Maggiorenne</option>
-                            <option value="Over65">Over 65</option>
+                            <option value="Over-65">Over 65</option>
                         </select>
                     </div>
                 </div>
@@ -82,9 +82,9 @@
                 <div  class="row d-flex justify-content-center g-5 bg-white mb-4 py-2 rounded">
                     <div class="col-12 text-center mb-4">
                         <!-- GENERATE BUTTON -->
-                        <button id="btn_generateTicket" class="btn btn-primary mx-3">GENERA</button>
+                        <button type="button" id="btn_generateTicket" class="btn btn-primary mx-3">GENERA</button>
                         <!-- RESET BUTTON -->
-                        <button id="btn_reset" class="btn btn-primary mx-3">ANNULLA</button>
+                        <button type="button" id="btn_reset" class="btn btn-primary mx-3">ANNULLA</button>
                     </div>
                 </div>
             </form>
@@ -108,7 +108,7 @@
                         </div>
 
                         <!-- PASSENGER INFO -->
-                        <div class="d-flex p-0 border border-secondary">
+                        <div id="passengerInfoCard" class="d-flex p-0 border border-secondary">
                             <!-- COMPLETE NAME -->
                             <div class="col-4 p-2 bg-secondary">
                                 <h4>NOME PASSEGGERO</h4>
