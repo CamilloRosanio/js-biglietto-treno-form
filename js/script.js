@@ -44,16 +44,43 @@ const btn_reset = document.getElementById('btn_reset');
 // Dichiaro i dati in mio possesso ed i valori da estrarre dai miei elementi
 
 const basePrice = 0.21;
-const discountPercentage_20 = 20;
-const discountPercentage_40 = 40;
+const discount_Under18 = 20;
+const discount_Over65 = 40;
 
 let value_input_completeName = input_completeName.getAttribute('value');
-let value_input_kilometers = input_kilometers.getAttribute('value');
+let value_input_kilometers = parseInt(input_kilometers.getAttribute('value'));
 let value_input_ageGroup = input_ageGroup.getAttribute('value');
 
-console.log(value_input_completeName);
-console.log(value_input_kilometers);
-console.log(value_input_ageGroup);
+let baseTicketPrice = basePrice * value_input_kilometers;
+
+let finalPrice;
+
+// console.log(value_input_completeName);
+// console.log(value_input_kilometers);
+// console.log(value_input_ageGroup);
+
 
 
 // Dichiaro le prime funzioni semplici da utilizzare nel calcolo
+
+
+/*****APPLICAZIONE SCONTO */
+const discountApplication = (price, age) => {
+    
+    if (age === 'Maggiorenne') {
+        return finalPrice = price;
+    } else if (age === 'Minorenne') {
+        return finalPrice = (price / 100) * (100 - discount_Under18);
+    } else if (age === 'Over65') {
+        return finalPrice = (price / 100) * (100 - discount_Over65);
+    }
+}
+
+// console.log(discountApplication(baseTicketPrice, value_input_ageGroup));
+
+
+
+// 
+
+
+
