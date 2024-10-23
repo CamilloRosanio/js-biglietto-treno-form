@@ -48,7 +48,7 @@
 <body>
    
     <header class="d-flex justify-content-center">
-        <h1 class="h1 my-4 text-white">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
+        <h1 class="h2 my-4 text-white">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
     </header> 
 
     <div class="container">
@@ -88,12 +88,56 @@
                     </div>
                 </div>
             </form>
+
+            <!-- TICKET DETAILS -->
+            <div>
+                <div class="text-center">
+                    <h2 class="h2 my-4 text-white">IL TUO BIGLIETTO</h2>
+                </div>
+                
+            
+                <!-- RESULTS -->
+                <div class="row d-flex justify-content-center g-5 bg-white mt-2 py-2 rounded">
+                    <div class="row my-4 p-2">
+                        <div class="col-12">
+                            <h3 class="">DETTAGLIO PASSEGGERI</h3>
+                        </div>
+
+                        <!-- PASSENGER INFO -->
+                        <div class="d-flex p-0 border border-secondary">
+                            <div class="col-4 p-2 bg-secondary">
+                                <h4>NOME PASSEGGERO</h4>
+                                <p id="output_CompleteName"></p>
+                            </div>
+                            <div class="col-2 p-2 ">
+                                <h6>Offerta</h6>
+                                <p id="output_Discount"></p>
+                            </div>
+                            <div class="col-2 p-2">
+                                <h6>Carrozza</h6>
+                                <p>5C</p>
+                            </div>
+                            <div class="col-2 p-2">
+                                <h6>Codice CP</h6>
+                                <p>912747</p>
+                            </div>
+                            <div class="col-2 p-2">
+                                <h6>Costo Bigietto</h6>
+                                <p id="output_FinalPrice"></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+            
         </main>
     </div>
     
 
     <footer>
-        footer
+        
     </footer>
 
 
