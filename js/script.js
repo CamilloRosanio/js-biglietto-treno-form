@@ -29,3 +29,31 @@ Se non vi sentite particolarmente creativi, questa potrebbe essere un'implementa
 /**********************************************************
 | # SVOLGIMENTO
 **********************************************************/
+
+
+// Dichiaro gli elementi HTML da cui ricaverò alcuni dati
+
+const Element_input_completeName = document.getElementById('input_completeName')
+const Element_input_kilometers = parseInt(document.getElementById('input_kilometers'));
+const Element_input_ageGroup = document.getElementById('input_ageGroup')
+
+const btn_generateTicket = document.getElementById('btn_generateTicket');
+const btn_reset = document.getElementById('btn_reset');
+
+
+// Dichiaro i dati in mio possesso ed i valori da estrarre dai miei elementi
+
+const basePrice = 0.21;
+const discountPercentage_20 = 20;
+const discountPercentage_40 = 40;
+
+let value_input_completeName = input_completeName.getAttribute('value');
+let value_input_kilometers = input_kilometers.getAttribute('value');
+let value_input_ageGroup = input_ageGroup.getAttribute('value');
+
+console.log(value_input_completeName);
+console.log(value_input_kilometers);
+console.log(value_input_ageGroup);
+
+
+// Dichiaro le prime funzioni semplici da utilizzare nel calcolo
