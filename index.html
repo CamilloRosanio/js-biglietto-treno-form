@@ -47,13 +47,50 @@
 
 <body>
    
-    <header>
-        header
+    <header class="d-flex justify-content-center">
+        <h1 class="h1 my-4 text-white">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
     </header> 
 
-    <main>
-        main
-    </main>
+    <div class="container">
+        <main>
+            <!-- FORM -->
+            <form>
+                <!-- INPUT ROW -->
+                <div class="row d-flex justify-content-center g-5 bg-white mt-2 py-2 rounded">
+                    <!-- INPUT COMPLETE NAME -->
+                    <div class="col-3 text-center mt-0">
+                        <label for="infoCompleteName" class="h6 mt-3 mb-4">Nome e Cognome</label>
+                        <input id="infoCompleteName" class="form-control mb-4" type="text" placeholder="Inserisci nome completo" required>
+                    </div>
+                    <!-- INPUT KM -->
+                    <div class="col-3 text-center mt-0">
+                        <label for="infoKilometers" class="h6 mt-3 mb-4">Km da percorrere</label>
+                        <input id="infoKilometers" class="form-control mb-4" type="number" placeholder="Inserisci Km" required>
+                    </div>
+                    <!-- INPUT AGE GROUP -->
+                    <div class="col-3 text-center mt-0">
+                        <label for="infoAgeGroup" class="h6 mt-3 mb-4">Fascia d'età</label>
+                        <select id="infoAgeGroup" class="form-control mb-4">
+                            <option>Minorenne</option>
+                            <option>Maggiorenne fino a 65 anni</option>
+                            <option>Over 65</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- BUTTONS ROW -->
+                <div  class="row d-flex justify-content-center g-5 bg-white mb-4 py-2 rounded">
+                    <div class="col-12 text-center mb-4">
+                        <!-- GENERATE BUTTON -->
+                        <button id="btn_generate"class="btn btn-primary mx-3">GENERA</button>
+                        <!-- RESET BUTTON -->
+                        <button id="btn_reset" class="btn btn-primary mx-3">ANNULLA</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+    
 
     <footer>
         footer
