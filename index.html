@@ -54,7 +54,7 @@
     <div class="container">
         <main>
             <!-- FORM -->
-            <form>
+            <form id="myForm">
                 <!-- INPUT ROW -->
                 <div class="row d-flex justify-content-center g-5 bg-white mt-2 py-2 rounded">
                     <!-- INPUT COMPLETE NAME -->
@@ -82,9 +82,10 @@
                 <div  class="row d-flex justify-content-center g-5 bg-white mb-4 py-2 rounded">
                     <div class="col-12 text-center mb-4">
                         <!-- GENERATE BUTTON -->
-                        <button type="button" id="btn_generateTicket" class="btn btn-primary mx-3">GENERA</button>
+                         <!-- Va aggiunto ai bottoni il tipo di azione (submit in questo caso) che andranno a svolgere e utilizzare in JS con EventListener -->
+                        <button type="submit" id="btn_generateTicket" class="btn btn-primary mx-3">GENERA</button>
                         <!-- RESET BUTTON -->
-                        <button type="button" id="btn_reset" class="btn btn-primary mx-3">ANNULLA</button>
+                        <button type="submit" id="btn_reset" class="btn btn-primary mx-3">ANNULLA</button>
                     </div>
                 </div>
             </form>

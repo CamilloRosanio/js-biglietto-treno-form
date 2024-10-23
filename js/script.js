@@ -37,6 +37,7 @@ Se non vi sentite particolarmente creativi, questa potrebbe essere un'implementa
 const Element_input_completeName = document.getElementById('input_completeName');
 const Element_input_kilometers = document.getElementById('input_kilometers');
 const Element_input_ageGroup = document.getElementById('input_ageGroup');
+const Element_myForm = document.getElementById('myForm');
 const Element_passengerInfoCard = document.getElementById('passengerInfoCard');
 
 // BUTTONS***
@@ -66,9 +67,9 @@ const basePrice = 0.21;
 const discount_Under18 = 20;
 const discount_Over65 = 40;
 
-let value_input_completeName = Element_input_completeName.getAttribute('value');
-let value_input_kilometers = parseInt(Element_input_kilometers.getAttribute('value'));
-let value_input_ageGroup = Element_input_ageGroup.getAttribute('value');
+const value_input_completeName = Element_input_completeName.getAttribute('value');
+const value_input_kilometers = parseInt(Element_input_kilometers.getAttribute('value'));
+const value_input_ageGroup = Element_input_ageGroup.getAttribute('value');
 
 let baseTicketPrice = basePrice * value_input_kilometers;
 
@@ -87,15 +88,15 @@ let finalPrice;
 
 
 /*****APPLICAZIONE SCONTO */
-const discountApplication = () => {
+const discountApplication = (price, age) => {
     let result;
 
-    if (value_input_ageGroup === 'Maggiorenne') {
-        result = baseTicketPrice;
-    } else if (value_input_ageGroup === 'Minorenne') {
-        result = (baseTicketPrice / 100) * (100 - discount_Under18);
-    } else if (value_input_ageGroup === 'Over-65') {
-        result = (baseTicketPrice / 100) * (100 - discount_Over65);
+    if (age === 'Maggiorenne') {
+        result = price;
+    } else if (age === 'Minorenne') {
+        result = (price / 100) * (100 - discount_Under18);
+    } else if (age === 'Over-65') {
+        result = (price / 100) * (100 - discount_Over65);
     }
 
     return finalPrice = parseInt(parseFloat(result).toFixed(2));
@@ -106,55 +107,61 @@ const discountApplication = () => {
 
 
 
-// Aggiungo il mio EventListener al bottone "Genera"
+// Aggiungo il mio EventListener al FORM (e non al bottone) che ascolterà a questo punto qualsiasi eventi "submit" da parte dei bottoni.
 
-btn_generateTicket.addEventListener('click' , (event) => {
+Element_myForm.addEventListener('submit' , (event) => {
     // Evento DEFAULT di prevenzione di invio dei dati del form al caricamento della pagina.
     // Questo perchè  serve che i valori siano letti solo al Submit tramite bottone e non prima.
     event.preventDefault();
 
-    baseTicketPrice = basePrice * value_input_kilometers;
-    finalPrice = discountApplication(baseTicketPrice, value_input_ageGroup);
+
+    // Dichiaro le variabili da usare nella funzione
+    const userName = Element_input_completeName.value;
+    const userKm = Element_input_kilometers.value;
+    const userAge = Element_input_ageGroup.value;
+    const initialPrice = basePrice * userKm;
+    const finalCost = discountApplication(initialPrice, userAge);
 
     // CONSOLE LOG DI CONTROLLO
-    console.log('Valore raccolto nome: ' + value_input_completeName);
-    console.log('Valore raccolto km: ' + value_input_kilometers);
-    console.log('Valore raccolto age: ' + value_input_ageGroup);
-    console.log('Valore raccolto base price: ' + baseTicketPrice);
-    console.log('Valore raccolto final price: ' + finalPrice);
+    console.log('Valore raccolto nome: ' + userName);
+    console.log('Valore raccolto km: ' + userKm);
+    console.log('Valore raccolto age: ' + userAge);
+    console.log('Valore raccolto base price: ' + initialPrice);
+    console.log('Valore raccolto final price: ' + typeof finalCost);
 
 
-    // // METODO # 1
-    // // Copio il codice HTML della parte interessata, aggiungendo i parametri dinamici nel codice sottoforma di variabili.
-    // const htmlCard = `
-    //     <!-- COMPLETE NAME -->
-    //     <div class="col-4 p-2 bg-secondary">
-    //         <h4>NOME PASSEGGERO</h4>
-    //         <p id="output_CompleteName">${value_input_completeName}</p>
-    //     </div>
-    //     <!-- OFFER TYPE -->
-    //     <div class="col-2 p-2 ">
-    //         <h6>Offerta</h6>
-    //         <p id="output_Discount">${value_input_ageGroup}</p>
-    //     </div>
-    //     <!-- CARRIAGE -->
-    //     <div class="col-2 p-2">
-    //         <h6>Carrozza</h6>
-    //         <p>5C</p>
-    //     </div>
-    //     <!-- CP CODE -->
-    //     <div class="col-2 p-2">
-    //         <h6>Codice CP</h6>
-    //         <p>912747</p>
-    //     </div>
-    //     <!-- FINAL PRICE -->
-    //     <div class="col-2 p-2">
-    //         <h6>Costo Bigietto</h6>
-    //         <p id="output_FinalPrice">${finalPrice}</p>
-    //     </div>`
+    // METODO # 1
+    // Copio il codice HTML della parte interessata, aggiungendo i parametri dinamici nel codice sottoforma di variabili.
+    const htmlCard = `
+        <!-- COMPLETE NAME -->
+        <div class="col-4 p-2 bg-secondary">
+            <h4>NOME PASSEGGERO</h4>
+            <p id="output_CompleteName">${userName}</p>
+        </div>
+        <!-- OFFER TYPE -->
+        <div class="col-2 p-2 ">
+            <h6>Offerta</h6>
+            <p id="output_Discount">${userAge}</p>
+        </div>
+        <!-- CARRIAGE -->
+        <div class="col-2 p-2">
+            <h6>Carrozza</h6>
+            <p>5C</p>
+        </div>
+        <!-- CP CODE -->
+        <div class="col-2 p-2">
+            <h6>Codice CP</h6>
+            <p>912747</p>
+        </div>
+        <!-- FINAL PRICE -->
+        <div class="col-2 p-2">
+            <h6>Costo Bigietto</h6>
+            <p id="output_FinalPrice">${finalCost}</p>
+        </div>`
 
-    // // Sostituisco poi l'innerHTML del suddetto elemento con quello da me generato tramite funzione.
-    // Element_passengerInfoCard.innerHTML = htmlCard;
+    // Sostituisco poi l'innerHTML del suddetto elemento con quello da me generato tramite funzione.
+    return console.log(Element_passengerInfoCard.innerHTML = htmlCard);
+
 })
 
 
