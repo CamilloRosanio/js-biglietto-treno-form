@@ -99,7 +99,7 @@ const discountApplication = (price, age) => {
         result = (price / 100) * (100 - discount_Over65);
     }
 
-    return finalPrice = parseInt(parseFloat(result).toFixed(2));
+    return finalPrice = result;
 }
 
 // CONSOLE LOG DI CONTROLLO
@@ -120,7 +120,7 @@ Element_myForm.addEventListener('submit' , (event) => {
     const userKm = Element_input_kilometers.value;
     const userAge = Element_input_ageGroup.value;
     const initialPrice = basePrice * userKm;
-    const finalCost = discountApplication(initialPrice, userAge);
+    const finalCost = parseFloat(discountApplication(initialPrice, userAge)).toFixed(2);
 
     // CONSOLE LOG DI CONTROLLO
     console.log('Valore raccolto nome: ' + userName);
